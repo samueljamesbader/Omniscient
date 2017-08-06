@@ -1,0 +1,25 @@
+package: 
+  name: omniscient
+  version: "0.0.1"
+
+source:
+  git_rev: v0.0.1
+  git_url: https://github.com/samueljamesbader/Omniscient
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - pint
+
+test:
+  imports:
+    -
+
+about:
+  home:
+  license:
+  license_file:
