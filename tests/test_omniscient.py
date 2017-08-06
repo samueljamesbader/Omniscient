@@ -11,5 +11,5 @@ if __name__=='__main__':
     brain=Brain(folder)
 
     brain.read("VM2003.txt")
-    print(brain('GaN.relaxed.varshni.Eg0'))
+    print(brain('GaN.relaxed.lattice.u'))
 

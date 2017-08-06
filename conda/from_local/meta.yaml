@@ -1,0 +1,25 @@
+package: 
+  name: omniscient
+  version: "0.0.2"
+
+source:
+  path: ../../
+
+requirements:
+  build:
+    - python
+    - setuptools
+
+  run:
+    - python
+    - numpy
+    - pint
+
+test:
+  imports:
+      - omniscient
+
+about:
+  home: https://github.com/samueljamesbader/Omniscient
+  license: MIT
+  license_file: LICENSE

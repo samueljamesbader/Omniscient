@@ -1,0 +1,1 @@
+from omniscient.omniscient import Brain
