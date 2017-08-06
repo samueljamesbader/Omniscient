@@ -1,9 +1,9 @@
 package: 
   name: omniscient
-  version: "0.0.1"
+  version: "0.0.2"
 
 source:
-  git_rev: v0.0.1
+  git_rev: v0.0.2
   git_url: https://github.com/samueljamesbader/Omniscient
 
 requirements:
@@ -17,9 +17,9 @@ requirements:
 
 test:
   imports:
-    -
+    - omniscient
 
 about:
-  home:
-  license:
-  license_file:
+  home: https://github.com/samueljamesbader/Omniscient
+  license: MIT
+  license_file: LICENSE
