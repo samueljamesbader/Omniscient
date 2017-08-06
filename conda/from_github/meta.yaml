@@ -13,11 +13,10 @@ requirements:
   run:
     - python
     - pint
-    - nose
+    - numpy
 
 test:
   imports:
-    - nose
     - omniscient
 
 about:
