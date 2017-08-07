@@ -1,6 +1,6 @@
 package: 
   name: omniscient
-  version: "0.0.2"
+  version: "0.0.3"
 
 source:
   path: ../../
@@ -17,7 +17,7 @@ requirements:
 
 test:
   imports:
-      - omniscient
+    - omniscient
 
 about:
   home: https://github.com/samueljamesbader/Omniscient

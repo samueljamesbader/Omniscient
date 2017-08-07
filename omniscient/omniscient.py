@@ -322,8 +322,9 @@ class Brain():
                 elif valstr.startswith('"') or valstr.startswith("'"):
                     self._parsed=valstr[1:-1]
 
-                # otherwise, pass through Pint
-                self._parsed=Brain._ureg(valstr)
+                else:
+                    # otherwise, pass through Pint
+                    self._parsed=Brain._ureg(valstr)
 
             return self._parsed
 
