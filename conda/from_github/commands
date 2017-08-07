@@ -1,0 +1,11 @@
+conda uninstall omniscient
+conda clean -a
+conda build purge
+conda build . --no-test
+
+# Get filepath of the tarball from there, hereafter called $PCKGPATH
+
+anaconda upload $PCKGPATH
+conda convert -p all $PCKGPATH
+anaconda upload win-64/*
+anaconda upload osx-64/*

@@ -250,7 +250,8 @@ class Brain():
         prev_indent=-1
 
         # Go through valid lines without comments
-        for i,line in enumerate([l.rstrip().split('#')[0] for l in filehandle]):
+        enumlines=enumerate([l.rstrip().split('#')[0] for l in filehandle])
+        for i,line in enumlines:
             if line.strip()=="": continue
 
             # If this line is indented further than the previous, add the previous to the chain
@@ -271,8 +272,14 @@ class Brain():
             # Now get rid of indents
             line=line.strip()
 
+            # If this is a special interpreter line
+            if line.startswith("<<<"):
+                if "tabulated" in line:
+                    self._detabulator(specialline=line,enumlines=enumlines,prev_dict=prev_dict)
+                prev_dict=None
+
             # If this is a value line
-            if ":" in line and not line.endswith(":"):
+            elif ":" in line and not line.endswith(":"):
 
                 # Break at colon
                 k,v=[p.strip() for p in line.split(":",maxsplit=1)]
@@ -327,6 +334,25 @@ class Brain():
                     self._parsed=Brain._ureg(valstr)
 
             return self._parsed
+
+    def _detabulator(self,specialline,enumlines,prev_dict):
+
+        _,major,func=(specialline.strip()[3:]).strip().split(maxsplit=2)
+        assert major=="row-major", "Not implemented non row-major tables"
+        func=eval(func)
+
+        i,line=next(enumlines)
+        colnames=line.strip().split()
+        ind=colnames[0]
+        colnames=colnames[1:]
+
+        for i,line in enumlines:
+            if line.strip().startswith(">>>"):
+                return
+            vals=line.strip().split()
+            vind=vals[0]
+            vals=[Brain.Value(func(valstr,vind,c)) for valstr,c in zip(vals[1:],colnames)]
+            prev_dict[ind+"="+vind]=OrderedDict(zip(colnames,vals))
 
 Brain._ureg=UnitRegistry()
 
