@@ -18,5 +18,6 @@ if __name__=='__main__':
     print(brain['FET8.dev=DC13r.Lsdm'])
     print(brain['FET8'])
     print(brain['FET5'])
+    print(brain['FET4.sam'])
     #print(brain._dict)
 

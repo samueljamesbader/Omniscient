@@ -76,3 +76,4 @@ mask=FET5
     >>>
 
 mask=FET4
+    sam: True

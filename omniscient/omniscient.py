@@ -329,6 +329,10 @@ class Brain():
                 elif valstr.startswith('"') or valstr.startswith("'"):
                     self._parsed=valstr[1:-1]
 
+                # if it's a boolean, return it
+                elif valstr in ['True','False']:
+                    return bool(valstr)
+
                 else:
                     # otherwise, pass through Pint
                     self._parsed=Brain._ureg(valstr)
