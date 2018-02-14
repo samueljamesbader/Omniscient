@@ -331,7 +331,7 @@ class Brain():
 
                 # if it's a boolean, return it
                 elif valstr in ['True','False']:
-                    return bool(valstr)
+                    return (valstr=="True")
 
                 else:
                     # otherwise, pass through Pint

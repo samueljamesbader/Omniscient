@@ -1,7 +1,15 @@
+# You'll need conda-build and anaconda-client installed
+
 conda uninstall omniscient
 conda clean -a
 conda build purge
 conda build . --no-test
+# ^ Note: if this returns a path too long error, it has to do with encryption
+# In that case make an unecrypted directory
+#   mkdir /unenc;
+#   mkdir /unenc/work
+# and build there
+#   conda build . --no-test --croot /unenc
 
 # Get filepath of the tarball from there, hereafter called $PCKGPATH
 
