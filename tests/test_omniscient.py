@@ -16,6 +16,7 @@ if __name__=='__main__':
     brain.read("FET8.txt")
     #print(brain._dict)
     print(brain['FET8.dev=DC13r.Lsdm'])
+    print(brain('FET8.Lsdm',dev=["DC13r"]))
     print(brain['FET8'])
     print(brain['FET5'])
     print(brain['FET4.sam'])
