@@ -20,5 +20,10 @@ if __name__=='__main__':
     print(brain['FET8'])
     print(brain['FET5'])
     print(brain['FET4.sam'])
+    try:
+        print(brain['FET4.joh'])
+        print("I FAILED")
+    except Exception as e:
+        print("Good: ",e)
     #print(brain._dict)
 

@@ -3,7 +3,10 @@ import numpy as np
 import os.path
 from pint import UnitRegistry
 
+ThrowExceptionIfNotFound=object()
+
 class Brain():
+
     def __init__(self,folder,dictionary=None):
         self._folder=folder
 
@@ -143,12 +146,12 @@ class Brain():
             # ...if there's just one result, return it.
             else: return vals[0]
 
-
-    def __call__(self,key,default=Exception("Multilevel key {:s} not found"),**constraints):
+    def __call__(self,key,default=ThrowExceptionIfNotFound,**constraints):
         if isinstance(key,str): key=key.split(".")
         v=self._subgetitem(self._dict,key,**constraints)
         if v is None:
-            if isinstance(default,BaseException): raise default
+            if default is ThrowExceptionIfNotFound:
+                raise Exception('Key "{}" not found'.format(".".join(key)))
             return default
         if isinstance(v,Brain.Value):
             return v.get()
@@ -357,6 +360,5 @@ class Brain():
             vind=vals[0]
             vals=[Brain.Value(func(valstr,vind,c)) for valstr,c in zip(vals[1:],colnames)]
             prev_dict[ind+"="+vind]=OrderedDict(zip(colnames,vals))
-
 Brain._ureg=UnitRegistry()
 
