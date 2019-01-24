@@ -3,7 +3,7 @@
 conda uninstall omniscient
 conda clean -a
 conda build purge
-conda build . --no-test
+conda build . --no-test  # don't use this, use the one below
 # ^ Note: if this returns a path too long error, it has to do with encryption
 # In that case make an unecrypted directory
 #   sudo mkdir /unenc;
